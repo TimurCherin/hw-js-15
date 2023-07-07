@@ -135,6 +135,15 @@ const account = {
     lastName: "Cherin",
     balans: 1000,
     status: "Adult",
+    number: 2232,
+}
+
+const Recipient = {
+    name: "Artem",
+    lastName: "alah",
+    balans: 200,
+    status: "kid",
+    number: 1121,
 }
 
 function addToBalans (account, sumToAdd) {
@@ -149,5 +158,17 @@ function earnFromBalans (account, sumToEarn) {
     return account.balans;
 }
 
+function transferMondey (account, howMuchMoneyToTransfer, accountOfRecipient){
+    if (account.balans >= howMuchMoneyToTransfer){
+        account.balans = account.balans - howMuchMoneyToTransfer;
+        accountOfRecipient.balans = accountOfRecipient.balans + howMuchMoneyToTransfer;
+    }
+    return account.balans;
+}
+
+
+console.log(transferMondey(account, 150, Recipient));
 console.log(addToBalans(account, 200));
 console.log(earnFromBalans(account, 500));
+console.log(Recipient.balans);
+console.log(account.balans);
