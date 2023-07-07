@@ -125,7 +125,36 @@ function calculateTotalPrice(allProdcuts, productName) {
 }
 console.log(calculateTotalPrice(products, "potato"));
                                                             // ex 7
+                                                            // Варіант 1
 const account = {
+    name: "Timur",
+    lastName: "Cherin",
+    balance: 1000,
+    status: "Adult",
+    number: 2232,
+    showBalance(){
+        console.log(`Доброго дня ${this.name} ${this.lastName}, у вас на рахунку ${this.balance} грн`);
+       return this.balance
+    },
+    addBalance(sum){
+        this.balance += sum;
+        console.log(`У вас на рахунку ${this.balance} грн`);
+        return this.balance;
+    },
+    earnBalance(sum){
+        if (this.balance >= sum){
+        return this.balance -= sum;
+    } else {
+        console.log("Не достатньо коштів на рахунку");
+        return this.balance;
+    }
+}
+}
+console.log(account.showBalance());
+console.log(account.addBalance(200));
+console.log(account.earnBalance(1200));
+                                                            // Варіант 2
+const account2 = {
     name: "Timur",
     lastName: "Cherin",
     balans: 1000,
@@ -141,29 +170,29 @@ const Recipient = {
     number: 1121,
 }
 
-function addToBalans (account, sumToAdd) {
-    account.balans = account.balans + sumToAdd;
-    return account.balans;
+function addToBalans (account2, sumToAdd) {
+    account2.balans = account2.balans + sumToAdd;
+    return account2.balans;
 }
 
-function earnFromBalans (account, sumToEarn) {
-    if(account.balans >= sumToEarn && account.status === "Adult"){
-        account.balans = account.balans - sumToEarn;
+function earnFromBalans (account2, sumToEarn) {
+    if(account2.balans >= sumToEarn && account2.status === "Adult"){
+        account2.balans = account2.balans - sumToEarn;
     }
-    return account.balans;
+    return account2.balans;
 }
 
-function transferMondey (account, howMuchMoneyToTransfer, accountOfRecipient){
-    if (account.balans >= howMuchMoneyToTransfer){
-        account.balans = account.balans - howMuchMoneyToTransfer;
+function transferMondey (account2, howMuchMoneyToTransfer, accountOfRecipient){
+    if (account2.balans >= howMuchMoneyToTransfer){
+        account2.balans = account2.balans - howMuchMoneyToTransfer;
         accountOfRecipient.balans = accountOfRecipient.balans + howMuchMoneyToTransfer;
     }
-    return account.balans;
+    return account2.balans;
 }
 
 
-console.log(transferMondey(account, 150, Recipient));
-console.log(addToBalans(account, 200));
-console.log(earnFromBalans(account, 500));
+console.log(transferMondey(account2, 150, Recipient));
+console.log(addToBalans(account2, 200));
+console.log(earnFromBalans(account2, 500));
 console.log(Recipient.balans);
-console.log(account.balans);
+console.log(account2.balans);
