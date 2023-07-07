@@ -42,16 +42,11 @@ const employees = {
 function findBestEmployee(employees){
     let maxTasks = 0;
     let bestEmployee = "";
-    let tasks = Object.values(employees);
-    let Names = Object.keys(employees);
-    for (const task of tasks){
-        if(task > maxTasks){
-            maxTasks = task;
-        }
-    } 
-    for (const name of Names){
-        if(employees[name] === maxTasks){
-            bestEmployee = name;
+    let names = Object.keys(employees);
+    for (const name of names){
+        if(employees[name] >= maxTasks){
+            maxTasks = employees[name];
+            bestEmployee = name; 
         }
     }
     return bestEmployee;
